@@ -20,6 +20,7 @@ ORDER BY
     CITY
 LIMIT
     1;
+
 ---------------------------------------------
 SELECT
     CITY,
@@ -31,25 +32,39 @@ ORDER BY
     CITY
 LIMIT
     1;
-    ------------------------------------------
-    
 
-    --QUESTION N0 5
-    --Query the average population of all cities in CITY where District is California.
+------------------------------------------
+--QUESTION N0 5
+--Query the average population of all cities in CITY where District is California.
+SELECT
+    AVG(POPULATION) AS AVERAGEPOPULATION
+FROM
+    CITY
+WHERE
+    DISTRICT = 'CALIFORNIA';
 
-    SELECT AVG(POPULATION) AS AVERAGEPOPULATION
-FROM CITY
-WHERE DISTRICT = 'CALIFORNIA';
- 
- --QUESTION NO 6
- --Query the difference between the maximum and minimum populations in CITY.
-
- SELECT MAX(POPULATION) - MIN(POPULATION) AS POPULATIONDIFFRENCE
-FROM CITY;
+--QUESTION NO 6
+--Query the difference between the maximum and minimum populations in CITY.
+SELECT
+    MAX(POPULATION) - MIN(POPULATION) AS POPULATIONDIFFRENCE
+FROM
+    CITY;
 
 --QUESTION NO 7
 --Query all columns (attributes) for every row in the CITY table.
+SELECT
+    *
+FROM
+    CITY;
 
-SELECT * FROM CITY;
-
-
+--------------------------------------------------------------------------------
+--QUESTION NO 6
+--Given the CITY and COUNTRY tables, query the names of all cities where the CONTINENT is 'Africa'.
+-- Note: CITY.CountryCode and COUNTRY.Code are matching key columns.
+SELECT
+    CITY.NAME
+FROM
+    CITY
+    JOIN COUNTRY ON CITY.COUNTRYCODE = COUNTRY.CODE
+WHERE
+    COUNTRY.CONTINENT = 'AFRICA';

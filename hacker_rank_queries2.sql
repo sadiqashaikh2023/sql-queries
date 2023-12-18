@@ -31,3 +31,25 @@ ORDER BY
     CITY
 LIMIT
     1;
+    ------------------------------------------
+    
+
+    --QUESTION N0 5
+    --Query the average population of all cities in CITY where District is California.
+
+    SELECT AVG(POPULATION) AS AVERAGEPOPULATION
+FROM CITY
+WHERE DISTRICT = 'CALIFORNIA';
+ 
+ --QUESTION NO 6
+ --Query the difference between the maximum and minimum populations in CITY.
+
+ SELECT MAX(POPULATION) - MIN(POPULATION) AS POPULATIONDIFFRENCE
+FROM CITY;
+
+--QUESTION NO 7
+--Query all columns (attributes) for every row in the CITY table.
+
+SELECT * FROM CITY;
+
+

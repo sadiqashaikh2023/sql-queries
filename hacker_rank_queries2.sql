@@ -68,3 +68,37 @@ FROM
     JOIN COUNTRY ON CITY.COUNTRYCODE = COUNTRY.CODE
 WHERE
     COUNTRY.CONTINENT = 'AFRICA';
+    ------------------------------------------------------
+
+--     QUESTION NO 7
+--     Generate the following two result sets:
+
+-- Query an alphabetically ordered list of all names in OCCUPATIONS,
+--  immediately followed by the first letter of each profession as a
+--   parenthetical (i.e.: enclosed in parentheses). For example: AnActorName(A),
+--    ADoctorName(D), AProfessorName(P), and ASingerName(S)
+
+
+SELECT NAME, CONCAT('(', SUBSTRING(OCCUPATION, 1, 1), ')') AS PROFESSION FROM OCCUPATIONS
+ORDER BY NAME;
+
+---------------------------------------------------------------------
+
+--QUESTION NO 8
+--Query the number of ocurrences of each occupation in OCCUPATIONS.
+-- Sort the occurrences in ascending order, and output them in the following format:
+
+-- There are a total of [occupation_count] [occupations.]
+
+SELECT CONCAT('There are a total of', ' ', COUNT(*), ' ', LOWER(OCCUPATION),'S.')
+ FROM OCCUPATIONS GROUP BY OCCUPATION ORDER BY COUNT(*), LOWER(OCCUPATION);
+ ----------------------------------------------------------------------------------
+--QUESTION NO 9
+--Given the CITY and COUNTRY tables, query the sum of the populations of all cities
+-- where the CONTINENT is 'Asia'.
+
+-- Note: CITY.CountryCode and COUNTRY.Code are matching key columns.
+
+SELECT SUM(CITY.POPULATION) AS TOTAL_POPULATION FROM CITY 
+JOIN COUNTRY ON CITY.COUNTRYCODE = COUNTRY.CODE
+WHERE COUNTRY.CONTINENT = 'ASIA';

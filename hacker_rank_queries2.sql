@@ -102,3 +102,28 @@ SELECT CONCAT('There are a total of', ' ', COUNT(*), ' ', LOWER(OCCUPATION),'S.'
 SELECT SUM(CITY.POPULATION) AS TOTAL_POPULATION FROM CITY 
 JOIN COUNTRY ON CITY.COUNTRYCODE = COUNTRY.CODE
 WHERE COUNTRY.CONTINENT = 'ASIA';
+----------------------------------------------------------------------
+--QUESTION NO 9
+-- DELETE DUPLICATE ENTRY FROM EMP TABLE
+-- ATRIBUTES(NAME, AGE, SALARY)
+
+ALTER TABLE ADD column ID INT(10) AUTO_INCREMENT;
+
+DELETE FROM EMP
+WHERE ID NOT IN (SELECT MIN(ID)FROM EMP GROUP BY NAME);
+-----------------------------------------------------------
+ --QUESTION NO 10
+ --HOW TO CREATE TABLE 
+
+ CREATE TABLE CUSTOMER(
+    ID INT(50) AUTO_INCREMENT PRIMARY KEY,
+    CUSTOMER_ID INT(50) NOT NULL,
+    NAME VARCHAR(20),
+    MOBILE_NO INT(11) UNIQUE KEY
+    );
+    --------------------------------------------------------
+    -- QUESTION NO 11
+    -- HOW TO INSERT DATA
+    
+    INSERT INTO customer(CUSTOMER_ID, NAME, MOBILE_NO) VALUES(30, 'ritu',789),
+     (55, 'raj', 567), (45, 'jack', 432), (20, 'subh', 875);

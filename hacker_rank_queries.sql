@@ -42,3 +42,32 @@ SELECT
     END AS TriangleType
 FROM
     TRIANGLES;
+    -----------------------------------------------------------------------------------
+    -- question no 4
+   -- find max salary from emp table.
+   SELECT max(salary) FROM emp;
+   ----------------------------------------------------------------------------------
+   --question no 5
+   --find 2nd highest salary from emp.
+   SELECT MAX(SALARY) FROM emp
+   WHERE SALARY NOT IN(SELECT MAX(SALARY) FROM emp);
+------------------------------------------------------------------------------------
+--QUESTION NO 6
+--  find the second-highest salary from the EMP table, considering the requirement
+--  that if there are two employees with the same highest salary, you want
+--  to select the one that comes alphabetically first.
+
+SELECT NAME, MAX(SALARY) FROM emp WHERE SALARY NOT IN (SELECT MAX(SALARY) FROM emp)
+ GROUP BY name ORDER BY NAME LIMIT 1;
+ --------------------------------------------------------------------------------------
+ --QUESTION NO 7
+ --find the 3rd highest salary.
+ SELECT id, salary FROM emp e1 where 2 =(SELECT COUNT(DISTINCT salary)from emp e2
+  WHERE e2.salary>e1.salary);
+  -------------------------------------------------------------------------------------
+  --QUESTION NO 8
+  --find the 4th highest salary.
+  SELECT id,salary FROM emp e1 where 3 = (select count(DISTINCT salary) from emp e2
+   where e2.salary=e1.salary);
+   -----------------------------------------------------------------------------------
+   

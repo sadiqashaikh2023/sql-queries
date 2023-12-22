@@ -70,4 +70,56 @@ SELECT NAME, MAX(SALARY) FROM emp WHERE SALARY NOT IN (SELECT MAX(SALARY) FROM e
   SELECT id,salary FROM emp e1 where 3 = (select count(DISTINCT salary) from emp e2
    where e2.salary=e1.salary);
    -----------------------------------------------------------------------------------
-   
+   --question no 9
+   --find no of rows in a table(sales) without using count function.
+
+   SELECT sum(1) FROM sales;
+   ------------------------------------------------------------------------------------
+   --question no 10
+   -- find top 5 stars who have done maximum no of movies?
+
+    select star, count(*) as num_movies from movies
+    group by star order by num_movies desc limit 5;
+  --------------------------------------------------------------------------------------
+  question no 11
+  --find top 5 genre who have earn max profit from movies table.
+  --following are the attributes.
+  --NAME, RATING, GENRE, YEAR, RELEASED, SCORE, VOTES, DIRECTOR, WRITER, STAR,
+  -- COUNTRY, BUDGET, GROSS, COMPANY, RUNTIME
+
+  SELECT genre, SUM(gross-budget) as total_profit FROM movies
+     GROUP BY genre ORDER BY total_profit DESC LIMIT 5; 
+-----------------------------------------------------------------------------------
+--QUESTION NO 12
+-- find top 5 directors who's movie have earn maximum avg profit.
+
+SELECT director, AVG(gross-budget) AS AVG_PROFIT FROM movies
+ GROUP BY director ORDER BY AVG_PROFIT DESC LIMIT 5;
+ ---------------------------------------------------------------------------------
+ --question no 12
+ -- find max budget movie name from movies table.
+ -- method 1
+ SELECT name, budget FROM movies GROUP BY name ORDER BY budget desc limit 1;
+
+-- method 2
+SELECT name, budget FROM movies WHERE budget=(SELECT MAX(budget) FROM movies);
+ ---------------------------------------------------------------------------------
+ --question no 13
+ --find top 5 which star and director combination have earn max profit.
+
+ 
+SELECT star, director, sum(gross-budget) as total_profit from movies
+ GROUP by star, director order by total_profit desc limit 5;
+------------------------------------------------------------------------------------ 
+--question no 14
+--find top 5 stars who have earn max profit.
+
+SELECT star, sum(gross-budget) as total_profit FROM movies
+ GROUP BY star order by total_profit desc limit 5;
+ --------------------------------------------------------------------------------------
+--question no 15
+--find the avg runtime movie name and star from movies having runtime larger than 120.
+
+SELECT star, avg(runtime) as avg_time_movies FROM movies
+ GROUP BY star HAVING avg_time_movies>120 order by avg_time_movies;
+----------------------------------------------------------------------------------------- 

@@ -123,3 +123,26 @@ SELECT star, sum(gross-budget) as total_profit FROM movies
 SELECT star, avg(runtime) as avg_time_movies FROM movies
  GROUP BY star HAVING avg_time_movies>120 order by avg_time_movies;
 ----------------------------------------------------------------------------------------- 
+--question no 16
+--find the possible combination of users with all groups.
+select * from users cross join groups;
+-----------------------------------------------------------------------------------------
+--question no 17
+--following are the tables.
+--employee(employee_name, street, city)
+--works(employee_name, company_name, salary)
+--company(comapany_name,city)
+--manages(employee_name, manager_name)
+-- find the name, street, city of residence for all employees
+-- who work for 'first bank corporation' and earn more than 10000.
+
+select e.employee_name, e.street, e.city from employee e
+join works w on e.employee_name = w.employee_name 
+where comapany_name ='first bank corporation' and salary > 10000;
+-------------------------------------------------------------------------------------------
+-- find the name of all employee in database who live in a same city as the companiess
+-- which they work.
+select e.employee_name from employee e join work w on e.employee_name = w.employee_name
+ join company c on w.comapany_name = c.comapany_name
+where e.city = c.city;
+---------------------------------------------------------------------------------------------

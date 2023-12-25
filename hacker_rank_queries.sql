@@ -140,9 +140,30 @@ select e.employee_name, e.street, e.city from employee e
 join works w on e.employee_name = w.employee_name 
 where comapany_name ='first bank corporation' and salary > 10000;
 -------------------------------------------------------------------------------------------
+--question no 18
 -- find the name of all employee in database who live in a same city as the companiess
 -- which they work.
 select e.employee_name from employee e join work w on e.employee_name = w.employee_name
  join company c on w.comapany_name = c.comapany_name
 where e.city = c.city;
 ---------------------------------------------------------------------------------------------
+--question no 19
+--find the names of all employess in the database who earn more than every employee of
+-- 'first bank corporation'
+select employee_name from works where salary >(select max(salary)from works
+group by comapany_name having comapany_name ='first bank corporation');
+-------------------------------------------------------------------------
+--question no 19
+--solution 1
+-- find the user id who present more than one group
+SELECT user_id FROM membership GROUP by user_id having COUNT(group_id)>1;
+-------------------------------------------------------------------------------
+--solution 2
+SELECT DISTINCT m1.user_id FROM membership m1 join membership m2
+ ON m1.user_id = m2.user_id AND m1.group_id<>m2.group_id;
+ -------------------------------------------------------------------------------
+ --question no 20
+ --find duplicate data in the database
+ SELECT *, COUNT(*) as duplicate FROM teacher GROUP by name having COUNT(*)>1;
+ -------------------------------------------------------------------------------
+ 

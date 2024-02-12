@@ -166,4 +166,7 @@ SELECT DISTINCT m1.user_id FROM membership m1 join membership m2
  --find duplicate data in the database
  SELECT *, COUNT(*) as duplicate FROM teacher GROUP by name having COUNT(*)>1;
  -------------------------------------------------------------------------------
- 
+--question no 21
+--retrive 50% data from database
+select * from users where user_id <= (select count(user_id)/2 from users);
+----------------------------------------------------------------------------------

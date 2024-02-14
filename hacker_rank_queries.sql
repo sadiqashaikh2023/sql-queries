@@ -170,3 +170,20 @@ SELECT DISTINCT m1.user_id FROM membership m1 join membership m2
 --retrive 50% data from database
 select * from users where user_id <= (select count(user_id)/2 from users);
 ----------------------------------------------------------------------------------
+-- Q NO 22
+-- FIND THE USERS WHO ARE NOT IN MEMBERSHIP TABLE
+select NAME from users u left join membership m on u.user_id=m.user_id where user id is null;
+-----------------------------------------------------------------------------------------------
+--Q NO 23
+--add multiple users in a table
+INSERT into users
+valuesa(null,'akash', 32, 12),
+(null, 'vikas', 45, 10);
+------------------------------------------------------------------------------------------------
+--Q NO 24
+-- FIND 2ND HIGHEST MOVIE
+SELECT * from movies order by score desc limit 1,1;
+---------------------------------------------------------------------------------------------
+--QNO 25
+ 
+
